@@ -38,9 +38,6 @@ export class DashboardComponent {
   }
 
   onMouseUp() {
-    const audio = this.clickSoundRef.nativeElement as HTMLAudioElement;
-    audio.play();
-    // Save the updated ClickStore value in localStorage
     window.localStorage.setItem(
       'ClickStore',
       (this.storedClickCount + 1).toString()
