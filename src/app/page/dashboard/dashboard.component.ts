@@ -17,6 +17,7 @@ export class DashboardComponent {
     window.localStorage.getItem('ClickStore') || '0',
     10
   );
+  audio = this.clickSoundRef.nativeElement as HTMLAudioElement;
 
   constructor(private locationService: LocationService) {}
 
@@ -28,18 +29,30 @@ export class DashboardComponent {
   onTouchStart(event: TouchEvent) {
     // Prevent default touch behavior, such as scrolling or zooming
     event.preventDefault();
-    this.onMouseDown();
+    this.audio.play();
+    this.isPopped = true;
   }
 
   onTouchEnd(event: TouchEvent) {
     // Prevent default touch behavior, such as scrolling or zooming
     event.preventDefault();
-    this.onMouseUp();
+    this.audio.pause();
+    // Save the updated ClickStore value in localStorage
+    window.localStorage.setItem(
+      'ClickStore',
+      (this.storedClickCount + 1).toString()
+    );
+    this.storedClickCount = parseInt(
+      window.localStorage.getItem('ClickStore') || '0',
+      10
+    );
+    this.isPopped = false;
+    // Reset the popped state after 200ms to animate back to the original size
+    this.clickCount++;
   }
 
   onMouseUp() {
-    const audio = this.clickSoundRef.nativeElement as HTMLAudioElement;
-    audio.pause();
+    this.audio.pause();
     // Save the updated ClickStore value in localStorage
     window.localStorage.setItem(
       'ClickStore',
@@ -55,8 +68,7 @@ export class DashboardComponent {
   }
 
   onMouseDown() {
-    const audio = this.clickSoundRef.nativeElement as HTMLAudioElement;
-    audio.play();
+    this.audio.play();
     this.isPopped = true;
   }
 }
