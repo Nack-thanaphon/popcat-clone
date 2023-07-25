@@ -1,21 +1,23 @@
 <div
-  class="popcat-container "
+  class="popcat-container"
   (mousedown)="onMouseDown()"
   (mouseup)="onMouseUp()"
+  (touchstart)="onTouchStart($event)"
+  (touchend)="onTouchEnd($event)"
 >
   <img
     [src]="isPopped ? '/assets/img/002.webp' : '/assets/img/001.png'"
     class="Popcat my-4"
   />
-  <h3 class="m-0 p-0">คะแนน</h3>
-  <h1 class="m-0 p-0" style="font-size: 4rem !important">{{ clickCount }}</h1>
+  <h3 class="m-0 p-0 text-white">คะแนน</h3>
+  <h1 class="m-0 p-0 text-white" style="font-size: 6rem !important">{{ clickCount }}</h1>
   <br />
-  <h5 class="m-0 p-0">
-    ตำแหน่ง {{ ipAddress }} |
+  <h5 class="m-0 p-0 text-white">
+    <i class="fas fa-location-pin text-danger"></i> {{ ipAddress }} |
     <span class="text-danger">{{ storedClickCount | number }} </span>คะแนน
   </h5>
 </div>
 
 <audio #clickSound>
-  <source src="https://www.myinstants.com/media/sounds/pop-cat-original-meme_3ObdYkj.mp3" type="audio/mpeg" />
+  <source [src]="'/assets/cry-banana-cat.mp3'" type="audio/mpeg" />
 </audio>

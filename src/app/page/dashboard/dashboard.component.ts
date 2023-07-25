@@ -23,10 +23,23 @@ export class DashboardComponent {
   async ngOnInit() {
     this.ipAddress = await this.locationService.getIpAddress();
   }
-  
+
+  // Function to add touch event listeners
+  onTouchStart(event: TouchEvent) {
+    // Prevent default touch behavior, such as scrolling or zooming
+    event.preventDefault();
+    this.onMouseDown();
+  }
+
+  onTouchEnd(event: TouchEvent) {
+    // Prevent default touch behavior, such as scrolling or zooming
+    event.preventDefault();
+    this.onMouseUp();
+  }
+
   onMouseUp() {
     const audio = this.clickSoundRef.nativeElement as HTMLAudioElement;
-    audio.pause();
+  
     // Save the updated ClickStore value in localStorage
     window.localStorage.setItem(
       'ClickStore',
@@ -39,6 +52,7 @@ export class DashboardComponent {
     this.isPopped = false;
     // Reset the popped state after 200ms to animate back to the original size
     this.clickCount++;
+    audio.pause();
   }
 
   onMouseDown() {

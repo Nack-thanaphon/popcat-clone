@@ -14,7 +14,7 @@ RUN npm run build
 # Production stage
 FROM nginx:stable-alpine
 
-COPY --from=builder /usr/src/app/dist/jwt-app /usr/share/nginx/html
+COPY --from=builder /usr/src/app/dist/poppap /usr/share/nginx/html
 
 EXPOSE 80
 
