@@ -26,12 +26,14 @@ export class DashboardComponent {
 
   // Function to add touch event listeners
   onTouchStart(event: TouchEvent) {
-  
+    // Prevent default touch behavior, such as scrolling or zooming
+    event.preventDefault();
     this.onMouseDown();
   }
 
   onTouchEnd(event: TouchEvent) {
-
+    // Prevent default touch behavior, such as scrolling or zooming
+    event.preventDefault();
     this.onMouseUp();
   }
 
