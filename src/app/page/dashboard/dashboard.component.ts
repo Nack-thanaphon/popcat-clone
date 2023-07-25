@@ -39,7 +39,7 @@ export class DashboardComponent {
 
   onMouseUp() {
     const audio = this.clickSoundRef.nativeElement as HTMLAudioElement;
-  
+    audio.pause();
     // Save the updated ClickStore value in localStorage
     window.localStorage.setItem(
       'ClickStore',
@@ -52,7 +52,6 @@ export class DashboardComponent {
     this.isPopped = false;
     // Reset the popped state after 200ms to animate back to the original size
     this.clickCount++;
-    audio.pause();
   }
 
   onMouseDown() {
