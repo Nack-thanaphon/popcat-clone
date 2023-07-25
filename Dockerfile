@@ -1,9 +1,21 @@
-FROM node:lts-alpine
+# Development stage
+FROM node:lts-alpine as builder
 
-WORKDIR /usr/src/app
-COPY "package.json" ./
-RUN npm install --production --silent && mv node_modules ../
+WORKDIR /usr/src/app/
+
+COPY package*.json ./
+
+RUN npm install
+
 COPY . .
+
+RUN npm run build
+
+# Production stage
+FROM nginx:stable-alpine
+
+COPY --from=builder /usr/src/app/dist/jwt-app /usr/share/nginx/html
+
 EXPOSE 80
 
-CMD ["npm", "start"]
+CMD ["nginx", "-g", "daemon off;"]
