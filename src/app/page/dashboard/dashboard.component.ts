@@ -29,7 +29,7 @@ export class DashboardComponent {
     // Prevent default touch behavior, such as scrolling or zooming
     event.preventDefault();
     const audio = this.clickSoundRef.nativeElement as HTMLAudioElement;
-    audio.pause();
+    audio.play();
     // Save the updated ClickStore value in localStorage
     window.localStorage.setItem(
       'ClickStore',
@@ -48,7 +48,8 @@ export class DashboardComponent {
     // Prevent default touch behavior, such as scrolling or zooming
     event.preventDefault();
     const audio = this.clickSoundRef.nativeElement as HTMLAudioElement;
-    audio.play();
+
+    audio.pause();
     this.isPopped = true;
   }
 
