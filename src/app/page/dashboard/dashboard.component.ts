@@ -28,34 +28,18 @@ export class DashboardComponent {
   onTouchStart(event: TouchEvent) {
     // Prevent default touch behavior, such as scrolling or zooming
     event.preventDefault();
-    const audio = this.clickSoundRef.nativeElement as HTMLAudioElement;
-    audio.play();
-    // Save the updated ClickStore value in localStorage
-    window.localStorage.setItem(
-      'ClickStore',
-      (this.storedClickCount + 1).toString()
-    );
-    this.storedClickCount = parseInt(
-      window.localStorage.getItem('ClickStore') || '0',
-      10
-    );
-    this.isPopped = false;
-    // Reset the popped state after 200ms to animate back to the original size
-    this.clickCount++;
+    this.onMouseDown();
   }
 
   onTouchEnd(event: TouchEvent) {
     // Prevent default touch behavior, such as scrolling or zooming
     event.preventDefault();
-    const audio = this.clickSoundRef.nativeElement as HTMLAudioElement;
-
-    audio.pause();
-    this.isPopped = true;
+    this.onMouseUp();
   }
 
   onMouseUp() {
     const audio = this.clickSoundRef.nativeElement as HTMLAudioElement;
-    audio.pause();
+    audio.play();
     // Save the updated ClickStore value in localStorage
     window.localStorage.setItem(
       'ClickStore',
