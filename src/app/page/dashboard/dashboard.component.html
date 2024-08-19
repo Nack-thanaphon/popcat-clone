@@ -1,5 +1,5 @@
 <div
-  class="popcat-container"
+  class="popcat-container my-auto"
   (mousedown)="onMouseDown()"
   (mouseup)="onMouseUp()"
   (touchstart)="onTouchStart($event)"
@@ -12,10 +12,10 @@
   <h3 class="m-0 p-0 text-white">คะแนน</h3>
   <h1 class="m-0 p-0 text-white" style="font-size: 6rem !important">{{ clickCount }}</h1>
   <br />
-  <h5 class="m-0 p-0 text-white">
-    <i class="fas fa-location-pin text-danger"></i> {{ ipAddress }} |
-    <span class="text-danger">{{ storedClickCount | number }} </span>คะแนน
-  </h5>
+  <div class="m-0 p-0 text-white text-center">
+    <p class="mb-3" style="font-size: 2rem;">{{ storedClickCount | number }} point</p>
+    <p><i class="fas fa-location-pin text-danger mr-3"></i>  {{ ipAddress }} </p>
+  </div>
 </div>
 
 

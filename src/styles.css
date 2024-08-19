@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,300&display=swap");
 body {
   font-family: "Kanit", sans-serif !important;
-  background-color: #050505;
-  background-image: url("https://i.kym-cdn.com/entries/icons/original/000/043/403/cover3.jpg");
-  background-position: center;
+  background-color: black !important;
   background-size: auto;
   background-repeat: no-repeat;
 }

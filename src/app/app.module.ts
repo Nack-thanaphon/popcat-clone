@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { HeaderComponent } from './component/header/header.component';
 import { ChatComponent } from './page/chat/chat.component';
+import { FooterComponent } from './component/footer/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     HeaderComponent,
+    FooterComponent,
     ChatComponent,
   ],
   imports: [
